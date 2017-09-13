@@ -47,7 +47,7 @@ const initApiRoutes = (app) => {
  * Configure error handling
  */
 const initErrorHandler = (app) => {
-  app.use(function (req, res, next) {
+  app.use((req, res) => {
     const err = new Error('Not Found');
     err.status = 404;
     res.status(err.status || 500).send({ message: err.message });
