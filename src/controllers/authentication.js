@@ -32,7 +32,7 @@ const login = (req, res) => {
     }
 
     if (!user || !user.authenticate(req.body.password)) {
-      res.status(400).send({ message: 'Authentication failed. Bad credentials.' });
+      return res.status(400).send({ message: 'Authentication failed. Bad credentials.' });
     } else {
       // if user is found and password is ok
       // delete user password for security
@@ -40,7 +40,7 @@ const login = (req, res) => {
       // create a token to authenticate user api call
       const token = jwt.sign(user, env.jwtSecret, { expiresIn: '24h' });
       // return the information including token as JSON
-      res.jsonp({ message: 'Login successful!', user, token });
+      return res.jsonp({ message: 'Login successful!', user, token });
     }
   });
 };
