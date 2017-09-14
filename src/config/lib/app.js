@@ -17,7 +17,7 @@ export const start = (cb) => {
     app.listen(envConfig.port, envConfig.host, () => {
       // Create server URL
       const protocol = envConfig.nodeEnv === 'secure' ? 'https://' : 'http://';
-      const server = `${envConfig.host}:${envConfig.port}`;
+      const server = `${protocol}${envConfig.host}:${envConfig.port}`;
 
       // Logging initialization
       console.log('--');

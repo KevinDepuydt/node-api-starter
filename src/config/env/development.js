@@ -1,6 +1,6 @@
 const developmentEnv = {
   db: {
-    uri: `mongodb://127.0.0.1/node-api-starter`,
+    uri: `mongodb://127.0.0.1/node-api-starter-dev`,
     options: {
       user: '',
       pass: ''

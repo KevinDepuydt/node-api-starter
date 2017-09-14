@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import methodOverride from 'method-override';
 import cookieParser from 'cookie-parser';
 import helmet from 'helmet';
+import morgan from 'morgan';
 import routes from '../../routes';
 
 /**
@@ -16,6 +17,8 @@ const initMiddleware = (app) => {
   app.use(methodOverride());
   // Add the cookie parser middleware
   app.use(cookieParser());
+  // Logger dev
+  app.use(morgan('dev'));
 };
 
 /**
@@ -40,7 +43,7 @@ const initHelmetHeaders = (app) => {
  * Configure app routes based on
  */
 const initApiRoutes = (app) => {
-  Object.keys(routes).forEach((routeName) => app.use(`/api/${routeName}`, routes[routeName]));
+  routes.forEach(route => app.use('/api', route));
 };
 
 /**
